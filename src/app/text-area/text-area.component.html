@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="left">
+                <label for="languageSelection" class="languageSelection"><h3 class="languageSelection">Select a language as output language:</h3></label>
+                <mat-radio-group class = "tp-radio-group" [(ngModel)] = "selectedLanguage">
+                    <mat-radio-button class = "tp-radio-button" style="padding-left: 5px;"
+                        *ngFor = "let language of languages" [value] = "language">
+                        {{language}}
+                    </mat-radio-button>
+                </mat-radio-group>
+                <form [formGroup]="inputTextForm" (ngSubmit)="onSubmit()">
+                    <label for="inputText" class="inputText"><h3 class="inputText">Enter your text:</h3></label>
+                    <textarea class="form-control" id="inputText" rows="10" name="inputText" formControlName="inputText" lang="si"></textarea>
+                    <!-- <input formControlName="inputText" name="inputText" placeholder="Enter your text"/> -->
+                    <button type="submit" class="btn btn-primary float-right" style="align-items: right;">Send</button>           
+                </form>
+            </div>                
+        </div>
+        <div class="col col2">
+            <div class="right">
+                <form [formGroup]="outputTextForm">
+                    <div class="rightElements">
+                        <label for="outputText" class="outputText"><h3 class="outputText">Transliterated Named Entities:</h3></label>
+                        <br>
+                        <h5 class="outputLanguage">In {{selectedLanguage}} language</h5>
+                    </div>
+                    <textarea class="form-control" id="outputText" rows="10" name="outputText" formControlName="outputText"></textarea>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
